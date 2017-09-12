@@ -184,6 +184,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('clientUniqueId', $value);
     }
 
+    public function getUserId()
+    {
+        return $this->getParameter('userId');
+    }
+
+    public function setUserId($value)
+    {
+        return $this->setParameter('userId', $value);
+    }
+
     public function getData()
     {
         $this->validate('username', 'password');
@@ -192,7 +202,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $data['sg_ClientLoginID'] = $this->getUsername();
         $data['sg_ClientPassword'] = $this->getPassword();
         $data['sg_VendorID'] = $this->getVendorId();
-        $data['sg_WebsiteID'] = $this->getWebsiteId();
+        $data['sg_WebSite'] = $this->getWebsiteId();
         $data['sg_MerchantPhoneNumber'] = $this->getMerchantPhoneNumber();
         $data['sg_Descriptor'] = $this->getDescriptor();
         $data['sg_MerchantName'] = $this->getMerchantName();
@@ -201,6 +211,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $data['sg_Is3dTrans'] = ($this->getIs3dTrans()) ? 1 : 0;
         $data['sg_ClientUniqueID'] = (string) $this->getClientUniqueId();
         $data['sg_Version'] = $this->getVersion();
+        $data['sg_UserID'] = $this->getUserId();
 
         return $data;
     }
