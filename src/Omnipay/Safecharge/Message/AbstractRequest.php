@@ -7,7 +7,7 @@ namespace Omnipay\Safecharge\Message;
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
     protected $liveEndpoint = 'https://process.safecharge.com/service.asmx/Process?';
-    protected $testEndpoint = 'https://test.safecharge.com/service.asmx/Process?';
+    protected $testEndpoint = 'https://process.sandbox.safecharge.com/service.asmx/Process?';
 
     public function getUsername()
     {
@@ -52,6 +52,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function setIs3dTrans($value)
     {
         return $this->setParameter('is3dTrans', $value);
+    }
+
+    public function getVersion()
+    {
+        return $this->getParameter('version') ? $this->getParameter('version') : '4.0.2';
+    }
+
+    public function setVersion($value)
+    {
+        return $this->setParameter('version', $value);
     }
 
     public function getVendorId()
@@ -164,6 +174,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('personalId', $value);
     }
 
+    public function getClientUniqueId()
+    {
+        return $this->getParameter('clientUniqueId');
+    }
+
+    public function setClientUniqueId($value)
+    {
+        return $this->setParameter('clientUniqueId', $value);
+    }
+
     public function getData()
     {
         $this->validate('username', 'password');
@@ -179,8 +199,8 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $data['sg_IPAddress'] = '127.0.0.1';
         $data['sg_ResponseFormat'] = 4;
         $data['sg_Is3dTrans'] = ($this->getIs3dTrans()) ? 1 : 0;
-        $data['sg_ClientUniqueID'] = (string) time();
-        $data['sg_Version'] = '4.0.2';
+        $data['sg_ClientUniqueID'] = (string) $this->getClientUniqueId();
+        $data['sg_Version'] = $this->getVersion();
 
         return $data;
     }
