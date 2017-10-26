@@ -23,14 +23,16 @@
         "psr-0": { "Omnipay\\Safecharge\\" : "src/" }
     },
     "require": {
-        "omnipay/common": "~2.0"
+        "omnipay/common": "3.0.x-dev"
     },
     "require-dev": {
-        "omnipay/tests": "~2.0"
+        "omnipay/tests": "3.0.x-dev"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.0.x-dev"
+            "dev-master": "3.0.x-dev"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
