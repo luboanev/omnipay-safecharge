@@ -62,10 +62,12 @@ class Response extends AbstractResponse
 
     public function getMessage()
     {
-        return (
-            isset($this->data['Reason']) &&
-            $this->data['Reason'] != ''
-        ) ? $this->data['Reason'] : null;
+        if (!empty($this->data['ReasonCodes']['Reason'])) {
+            return $this->data['ReasonCodes']['Reason'];
+        } elseif (!empty($this->data['Reason'])) {
+            return $this->data['Reason'];
+        }
+        return null;
     }
 
     // public function getRedirectUrl()

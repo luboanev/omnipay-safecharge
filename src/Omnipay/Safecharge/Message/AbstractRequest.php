@@ -202,7 +202,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $data['sg_ClientLoginID'] = $this->getUsername();
         $data['sg_ClientPassword'] = $this->getPassword();
         $data['sg_VendorID'] = $this->getVendorId();
-        $data['sg_WebSiteID'] = $this->getWebsiteId();
+        $data['sg_WebSite'] = $this->getWebsiteId();
         $data['sg_MerchantPhoneNumber'] = $this->getMerchantPhoneNumber();
         $data['sg_Descriptor'] = $this->getDescriptor();
         $data['sg_MerchantName'] = $this->getMerchantName();
