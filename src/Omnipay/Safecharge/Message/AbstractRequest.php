@@ -202,10 +202,10 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $data['sg_ClientLoginID'] = $this->getUsername();
         $data['sg_ClientPassword'] = $this->getPassword();
         $data['sg_VendorID'] = $this->getVendorId();
-        $data['sg_WebSiteID'] = $this->getWebsiteId();
-        $data['sg_MerchantPhoneNumber'] = $this->getMerchantPhoneNumber();
+//        $data['sg_WebSiteID'] = $this->getWebsiteId();
+        $data['sg_Phone'] = $this->getMerchantPhoneNumber();
         $data['sg_Descriptor'] = $this->getDescriptor();
-        $data['sg_MerchantName'] = $this->getMerchantName();
+//        $data['sg_MerchantName'] = $this->getMerchantName();
         $data['sg_IPAddress'] = '127.0.0.1';
         $data['sg_ResponseFormat'] = 4;
         $data['sg_Is3dTrans'] = ($this->getIs3dTrans()) ? 1 : 0;
@@ -229,7 +229,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
             $data['sg_State'] = $card->getBillingState();
             $data['sg_Zip'] = $card->getBillingPostcode();
             $data['sg_Country'] = $card->getBillingCountry();
-            $data['sg_Phone'] = $card->getBillingPhone();
+//            $data['sg_Phone'] = $card->getBillingPhone();
             $data['sg_IPAddress'] = $this->getClientIp();
             $data['sg_Email'] = $card->getEmail();
             $data['sg_NameOnCard'] = $this->getNameOnCard();
